@@ -1,4 +1,3 @@
-'use client'
 import { CustomFilter, Hero, SearchBar,CarCard } from '@/components'
 import { fetchCars } from '@/utils'
 import Image from 'next/image'
@@ -22,8 +21,8 @@ export default async function Home() {
 
           <div className="home__filter-container">
 
-            <CustomFilter title="fuel"/>
-            <CustomFilter title="year"/>
+            {/* <CustomFilter title="fuel"/>
+            <CustomFilter title="year"/> */}
           </div>
         </div>
 

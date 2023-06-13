@@ -2,7 +2,7 @@
 import { CarCardProps } from "@/types";
 import { calculateCarRent } from "@/utils";
 import Image from "next/image";
-import { CustomButton } from '@/components';
+import { CarDetails, CustomButton } from '@/components';
 import { useState } from 'react';
 
 interface carProps {
@@ -63,7 +63,7 @@ const CarCard = ({ car }: carProps) => {
               alt="gas"
             />
             <p className="text-[14px]">
-              {city_mpg} MPG
+              {city_mpg} MPG 
             </p>
           </div>
         </div>
@@ -74,10 +74,13 @@ const CarCard = ({ car }: carProps) => {
                 containerStyles ="w-full py-[16px] rounded-full bg-primary-blue"
                 textStyles ="text-white text-[14px] leading-[17px] font-bold"
                 rightIcon = "/asset/right-arrow.svg"
-                handleClick ={ () =>  setIsOpen(true)}
+                handleClick ={ () =>  setIsOpen((isopen) => !isopen)}
             />
         </div>
       </div>
+      <CarDetails 
+        isOpen={isOpen} 
+        closeModal={() => setIsOpen(false)} car={car} />
     </div>
   );
 };
