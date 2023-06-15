@@ -1,6 +1,6 @@
 'use client'
 import { CarCardProps } from "@/types";
-import { calculateCarRent } from "@/utils";
+import { calculateCarRent, generateCarImageUrl } from "@/utils";
 import Image from "next/image";
 import { CarDetails, CustomButton } from '@/components';
 import { useState } from 'react';
@@ -8,15 +8,16 @@ import { useState } from 'react';
 interface carProps {
   car: CarCardProps;
 }
-const CarCard = ({ car }: carProps) => {
+const CarCard = async ({ car }: carProps) => {
   const { city_mpg, year, make, model, transmission, drive } = car;
   const carRent = calculateCarRent(city_mpg, year);
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="car-card group">
       <div className="car-card__content">
         <h2 className="car-card__content-title">
-          {make} {model}
+          {make} {model} 
         </h2>
       </div>
 
@@ -28,7 +29,7 @@ const CarCard = ({ car }: carProps) => {
 
       <div className="relative w-full h-40 my-3 object-contain">
         <Image
-          src="/asset/hero.png"
+          src={await generateCarImageUrl(car= car)}
           alt={model}
           fill
           priority
@@ -74,7 +75,7 @@ const CarCard = ({ car }: carProps) => {
                 containerStyles ="w-full py-[16px] rounded-full bg-primary-blue"
                 textStyles ="text-white text-[14px] leading-[17px] font-bold"
                 rightIcon = "/asset/right-arrow.svg"
-                handleClick ={ () =>  setIsOpen((isopen) => !isopen)}
+                handleClick ={ () =>  setIsOpen(true)}
             />
         </div>
       </div>
