@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { useRouter } from "next/navigation"
 import { updateSearchParams } from "@/utils"
 
-const CustomFilter = ({title, options, setFilter}: CustomFilterProps) => {
+function CustomFilter<T>  ({ options, setFilter}: CustomFilterProps<T>){
 
   const [selected, setSelected] = useState(options[0]);
   const router = useRouter();
@@ -20,7 +20,7 @@ const CustomFilter = ({title, options, setFilter}: CustomFilterProps) => {
         onChange={(e) => 
             {
               setSelected(e);
-              setFilter(e.value);
+              setFilter(e.value  as unknown as T);
           }
         }
       >

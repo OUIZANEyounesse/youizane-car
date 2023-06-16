@@ -55,13 +55,13 @@ export default async function Home(searchParams: FilterProps) {
 
         <div className="home__filters">
           <SearchBar 
-            setManufacturer ={setSearchManufacturer}
+            setManuFacturer ={setSearchManufacturer}
             setModel={setSearchModel}
           />
 
           <div className="home__filter-container">
-            <CustomFilter title="fuel" options={fuels} setFilter={setFuel} />
-            <CustomFilter title="year" options={yearsOfProduction}  setFilter={setYear}/>
+            <CustomFilter  options={fuels} setFilter={setFuel} />
+            <CustomFilter  options={yearsOfProduction}  setFilter={setYear}/>
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export default async function Home(searchParams: FilterProps) {
         ) : (
           <div className="home__error-container">
             <h2 className="text-black text-xl">Oops, no results</h2>
-            <p>{allCars?.message}</p>
+            <p></p>
           </div>
         )}
       </div>
