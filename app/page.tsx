@@ -6,7 +6,7 @@ import { fuels, manufacturers, yearsOfProduction } from "../constants/index";
 import { FilterProps } from "@/types";
 import { useEffect, useState } from "react";
 
-export default async function Home(searchParams: FilterProps) {
+export default async function Home() {
   const [allCars, setAllCars] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -41,8 +41,6 @@ export default async function Home(searchParams: FilterProps) {
   useEffect(() => {
     getCars();
   }, [fuel, year, limit, searchManufacturer, searchModel]);
-
-  const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
   return (
     <main className="overflow-hidden">
